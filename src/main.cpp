@@ -9,7 +9,7 @@
 #include <thread>
 #include <QDebug>
 #include <QDate>
-#include "UI/GameWindow.h"
+#include "ui/GameWindow.h"
 #include "debug/debug.h"
 #define QT_MESSAGELOGCONTEXT
 

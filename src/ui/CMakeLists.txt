@@ -1,0 +1,1 @@
+target_sources(CheckersGUI PRIVATE GameWindow.cpp GameWindow.h)

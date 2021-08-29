@@ -7,6 +7,7 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
+#include "BoardTile.h"
 class MainWindow;
 
 class GameBoard : public QWidget {
@@ -14,9 +15,10 @@ class GameBoard : public QWidget {
 public:
     GameBoard(int height, int width, MainWindow *parent);
     ~GameBoard() = default;
-
 private:
-    QWidget *board;
+    BoardTile *board[64];
+public slots:
+    void TileClicked(int row, int col);
 };
 
 

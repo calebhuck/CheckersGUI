@@ -36,6 +36,7 @@ MainWindow::MainWindow() {
     this->setStyleSheet("background-color:#bac7b0");
 
     choose_num_players = new ChoosePlayers(usable_window_height, usable_window_width, this);
+    this->setCentralWidget(choose_num_players);
 //    QObject::connect(choose_num_players, Ch)
 
 
@@ -49,6 +50,7 @@ void MainWindow::SetNumPlayers(int num_players) {
     selected_num_players = num_players;
     delete choose_num_players;
     game_board = new GameBoard(usable_window_height, usable_window_width, this);
+    this->setCentralWidget(game_board);
 }
 
 void MainWindow::ResetGame() {

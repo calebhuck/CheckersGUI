@@ -13,13 +13,13 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(CheckersGUI)
+add_executable(CheckersGUI src/ui/MainWindow.cpp src/ui/MainWindow.h src/ui/ChoosePlayers.cpp src/ui/ChoosePlayers.h src/ui/GameBoard.cpp src/ui/GameBoard.h)
 target_link_libraries(CheckersGUI
         Qt::Core
         Qt::Gui
         Qt::Widgets
         )
 
-set_property(TARGET CheckersGUI PROPERTY AUTOMOC ON)
+#set_property(TARGET CheckersGUI PROPERTY AUTOMOC ON)
 
 add_subdirectory(src)

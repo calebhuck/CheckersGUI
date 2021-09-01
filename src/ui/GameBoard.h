@@ -19,6 +19,7 @@ private:
     BoardTile *board[64];
 public slots:
     void TileClicked(int row, int col);
+    void ResetGame();
 };
 
 

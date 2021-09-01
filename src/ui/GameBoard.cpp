@@ -33,6 +33,25 @@ GameBoard::GameBoard(int height, int width, MainWindow *parent) {
         }
 
     }
+    ResetGame();
+}
+
+void GameBoard::ResetGame() {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (i <= 2 || i >= 5) {
+                if (j % 2 == 0 && i % 2 == 0) {
+                    const QIcon temp("../img/coin.svg");
+                    board[j * 8 + i]->setIcon(temp);
+                }
+                else if (j % 2 != 0 && i % 2 != 0) {
+                    const QIcon temp("../img/coin.svg");
+                    board[j * 8 + i]->setIcon(temp);
+                }
+
+            }
+        }
+    }
 }
 
 void GameBoard::TileClicked(int row, int col) {

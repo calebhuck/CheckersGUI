@@ -18,15 +18,15 @@ public:
     ~MainWindow() = default;
 
 private:
-    QWidget *choose_num_players;
-    GameBoard *game_board;
+    QWidget *choose_num_players_;
+    GameBoard *game_board_;
 
-    int screen_height;
-    int screen_width;
-    int usable_window_height;
-    int usable_window_width;
-    int one_or_two_selection = 0;
-    int selected_num_players;
+    int screen_height_;
+    int screen_width_;
+    int usable_window_height_;
+    int usable_window_width_;
+    int one_or_two_selection_ = 0;
+    int selected_num_players_;
 public slots:
     void SetNumPlayers(int num_players);
     void ResetGame();

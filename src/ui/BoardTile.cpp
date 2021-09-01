@@ -5,9 +5,9 @@
 #include "BoardTile.h"
 #include "GameBoard.h"
 BoardTile::BoardTile(int i, int j, GameBoard *parent) {
-    row = j;
-    col = i;
-    selected = false;
+    row_ = j;
+    col_ = i;
+    selected_ = false;
     QObject::connect(this, &QPushButton::clicked, this, &BoardTile::ClickEvent);
     QObject::connect(this, &BoardTile::TileClicked, parent, &GameBoard::TileClicked);
     this->setParent(parent);
@@ -21,9 +21,13 @@ void BoardTile::ClickEvent() {
 //    else {
 //        this->setStyleSheet(this->styleSheet().append(QString(";border: none")));
 //    }
-    emit TileClicked(row, col);
+    emit TileClicked(row_, col_);
 }
 
 bool BoardTile::Selected() {
-    return selected;
+    return selected_;
+}
+
+void BoardTile::SetToken(Token *token) {
+    token = token;
 }

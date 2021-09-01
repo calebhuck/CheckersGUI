@@ -27,16 +27,16 @@ MainWindow::MainWindow() {
     QObject::connect(new_game, &QAction::triggered, this, &MainWindow::NewGame);
 
     QScreen *screen = QGuiApplication::primaryScreen();
-    screen_height = screen->geometry().height();
-    screen_width = screen->geometry().width();
-    usable_window_height = screen->geometry().height() / 2;
-    usable_window_width = screen->geometry().height() / 2;
+    screen_height_ = screen->geometry().height();
+    screen_width_ = screen->geometry().width();
+    usable_window_height_ = screen->geometry().height() / 2;
+    usable_window_width_ = screen->geometry().height() / 2;
 
-    this->setFixedSize(usable_window_height, usable_window_width);
+    this->setFixedSize(usable_window_height_, usable_window_width_);
     this->setStyleSheet("background-color:#bac7b0");
 
-    choose_num_players = new ChoosePlayers(usable_window_height, usable_window_width, this);
-    this->setCentralWidget(choose_num_players);
+    choose_num_players_ = new ChoosePlayers(usable_window_height_, usable_window_width_, this);
+    this->setCentralWidget(choose_num_players_);
 //    QObject::connect(choose_num_players, Ch)
 
 
@@ -47,10 +47,10 @@ MainWindow::MainWindow() {
 }
 
 void MainWindow::SetNumPlayers(int num_players) {
-    selected_num_players = num_players;
-    delete choose_num_players;
-    game_board = new GameBoard(usable_window_height, usable_window_width, this);
-    this->setCentralWidget(game_board);
+    selected_num_players_ = num_players;
+    delete choose_num_players_;
+    game_board_ = new GameBoard(usable_window_height_, usable_window_width_, this);
+    this->setCentralWidget(game_board_);
 }
 
 void MainWindow::ResetGame() {

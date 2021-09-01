@@ -7,46 +7,56 @@
 #include "MainWindow.h"
 #include <QDebug>
 #include <QWidget>
-//#include "BoardTile.h"
+//#include "Board_Tile.h"
+#include "Token.h"
 
 GameBoard::GameBoard(int height, int width, MainWindow *parent) {
     this->setParent(parent);
     this->resize(height, width);
-//    board = new QWidget[64];
+
     int tile_size = height / 8;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            board[i * 8 + j] = new BoardTile(i, j, this);
+            board_[i][j] = new BoardTile(i, j, this);
             if ((i + 1) % 2 == 0)
                 if ((j + 1) % 2 == 0)
-                    board[i  * 8 + j]->setStyleSheet("background-color: #3f6e3a");
+                    board_[i][j]->setStyleSheet("background-color: #3f6e3a");
                 else
-                    board[i  * 8 + j]->setStyleSheet("background-color: white");
+                    board_[i][j]->setStyleSheet("background-color: white");
             else
                 if ((j + 1) % 2 == 0)
-                    board[i  * 8 + j]->setStyleSheet("background-color: white");
+                    board_[i][j]->setStyleSheet("background-color: white");
                 else
-                    board[i  * 8 + j]->setStyleSheet("background-color: #3f6e3a");
+                    board_[i][j]->setStyleSheet("background-color: #3f6e3a");
 
-            board[i * 8 + j]->resize(tile_size, tile_size);
-            board[i * 8 + j]->move(i * tile_size, j * tile_size);
+                board_[i][j]->resize(tile_size, tile_size);
+                board_[i][j]->move(j * tile_size, i * tile_size);
         }
 
+    }
+    for (int i = 0; i < 24; i++) {
+        tokens_.push_back(new Token(i));
     }
     ResetGame();
 }
 
 void GameBoard::ResetGame() {
+    auto it = tokens_.begin();
+    auto *p1_icon = new QIcon("../img/p1.svg");
+    auto *p1_icon_king = new QIcon("../img/p1_king.svg");
+    auto *p2_icon = new QIcon("../img/p2.svg");
+    auto *p2_icon_king = new QIcon("../img/p2_king.svg");
+
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (i <= 2 || i >= 5) {
                 if (j % 2 == 0 && i % 2 == 0) {
                     const QIcon temp("../img/coin.svg");
-                    board[j * 8 + i]->setIcon(temp);
+                    board_[i][j]->setIcon(temp);
                 }
                 else if (j % 2 != 0 && i % 2 != 0) {
                     const QIcon temp("../img/coin.svg");
-                    board[j * 8 + i]->setIcon(temp);
+                    board_[i][j]->setIcon(temp);
                 }
 
             }

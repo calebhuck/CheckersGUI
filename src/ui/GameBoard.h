@@ -16,7 +16,8 @@ public:
     GameBoard(int height, int width, MainWindow *parent);
     ~GameBoard() = default;
 private:
-    BoardTile *board[64];
+    BoardTile *board_[8][8];
+    std::vector<Token*> tokens_;
 public slots:
     void TileClicked(int row, int col);
     void ResetGame();

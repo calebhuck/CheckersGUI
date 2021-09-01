@@ -7,9 +7,10 @@
 
 #include <QWidget>
 #include <QPushButton>
-#include "Token.h"
+//#include "Token.h"
 
 class GameBoard;
+class Token;
 class BoardTile : public QPushButton {
     Q_OBJECT
 public:

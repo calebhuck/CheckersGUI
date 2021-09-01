@@ -5,8 +5,8 @@
 #include "BoardTile.h"
 #include "GameBoard.h"
 BoardTile::BoardTile(int i, int j, GameBoard *parent) {
-    row_ = j;
-    col_ = i;
+    row_ = i;
+    col_ = j;
     selected_ = false;
     QObject::connect(this, &QPushButton::clicked, this, &BoardTile::ClickEvent);
     QObject::connect(this, &BoardTile::TileClicked, parent, &GameBoard::TileClicked);

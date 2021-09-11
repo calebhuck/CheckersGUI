@@ -12,11 +12,10 @@ class BoardTile;
 class Token {
 
 public:
-    Token(int id);
+    Token(int id, QIcon* reg, QIcon* king);
     ~Token() = default;
 
     void SetTile(BoardTile *tile);
-    void SetIcons(QIcon *reg, QIcon *king);
 
 private:
     int id_;

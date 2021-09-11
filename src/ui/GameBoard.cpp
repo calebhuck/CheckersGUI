@@ -13,6 +13,10 @@
 GameBoard::GameBoard(int height, int width, MainWindow *parent) {
     this->setParent(parent);
     this->resize(height, width);
+    p1_icon_ = new QIcon("../img/p1.png");
+    p1_icon_king_ = new QIcon("../img/p1_king.png");
+    p2_icon_ = new QIcon("../img/p2.png");
+    p2_icon_king_ = new QIcon("../img/p2_king.png");
 
     int tile_size = height / 8;
     for (int i = 0; i < 8; i++) {
@@ -34,31 +38,30 @@ GameBoard::GameBoard(int height, int width, MainWindow *parent) {
         }
 
     }
-    for (int i = 0; i < 24; i++) {
-        tokens_.push_back(new Token(i));
+    for (int i = 0; i < 12; i++) {
+        p1_tokens_.push_back(new Token(i, p1_icon_, p1_icon_king_));
+        p2_tokens_.push_back(new Token(i, p2_icon_, p2_icon_king_));
     }
     ResetGame();
 }
 
 void GameBoard::ResetGame() {
-    auto it = tokens_.begin();
-    auto *p1_icon = new QIcon("../img/p1.svg");
-    auto *p1_icon_king = new QIcon("../img/p1_king.svg");
-    auto *p2_icon = new QIcon("../img/p2.svg");
-    auto *p2_icon_king = new QIcon("../img/p2_king.svg");
+    auto p1_it = p1_tokens_.begin();
+    auto p2_it = p2_tokens_.begin();
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (i <= 2 || i >= 5) {
-                if (j % 2 == 0 && i % 2 == 0) {
-                    const QIcon temp("../img/coin.svg");
-                    board_[i][j]->setIcon(temp);
-                }
-                else if (j % 2 != 0 && i % 2 != 0) {
-                    const QIcon temp("../img/coin.svg");
-                    board_[i][j]->setIcon(temp);
+            if (i <= 2) {
+                if ((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0)) {
+                    (*std::next(p1_it, 1))->SetTile(board_[i][j]);
                 }
 
+
+            }
+            else if (i >= 5) {
+                if ((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0)) {
+                    (*std::next(p2_it, 1))->SetTile(board_[i][j]);
+                }
             }
         }
     }

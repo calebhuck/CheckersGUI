@@ -22,7 +22,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext &context, cons
             fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
             break;
         case QtFatalMsg:
-            fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
+            fprintf(stderr, "Fatal Error: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
             break;
     }
 }

@@ -17,7 +17,12 @@ public:
     ~GameBoard() = default;
 private:
     BoardTile *board_[8][8];
-    std::vector<Token*> tokens_;
+    std::vector<Token*> p1_tokens_;
+    std::vector<Token*> p2_tokens_;
+    QIcon* p1_icon_;
+    QIcon* p1_icon_king_;
+    QIcon* p2_icon_;
+    QIcon* p2_icon_king_;
 public slots:
     void TileClicked(int row, int col);
     void ResetGame();

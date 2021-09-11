@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     qInstallMessageHandler(DebugMessageHandler);
     MainWindow window;
+//    qFatal("Jonathan, you are not the favorite...");
 
 //    while (true) {
 //        std::cout << window.size().width() << " " << window.size().height() << std::endl;

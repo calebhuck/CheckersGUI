@@ -33,16 +33,10 @@ MainWindow::MainWindow() {
     usable_window_width_ = screen->geometry().height() / 2;
 
     this->setFixedSize(usable_window_height_, usable_window_width_);
-    this->setStyleSheet("background-color:#bac7b0");
+    this->setStyleSheet("background-color:#cdcdcd");
 
     choose_num_players_ = new ChoosePlayers(usable_window_height_, usable_window_width_, this);
     this->setCentralWidget(choose_num_players_);
-//    QObject::connect(choose_num_players, Ch)
-
-
-
-
-//    this->se
     this->show();
 }
 

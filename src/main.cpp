@@ -15,9 +15,9 @@
 #define QT_MESSAGELOGCONTEXT
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
     qInstallMessageHandler(DebugMessageHandler);
-    MainWindow window;
+    MainWindow window(&app);
 //    qFatal("Jonathan, you are not the favorite...");
 
 //    while (true) {

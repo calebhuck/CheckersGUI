@@ -7,8 +7,8 @@
 #include "MainWindow.h"
 #include <QDebug>
 #include <QWidget>
-//#include "Board_Tile.h"
-#include "Token.h"
+#include "ui/BoardTile.h"
+#include "game/Token.h"
 
 GameBoard::GameBoard(int height, int width, MainWindow *parent) {
     this->setParent(parent);
@@ -55,8 +55,6 @@ void GameBoard::ResetGame() {
                 if ((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0)) {
                     (*std::next(p1_it, 1))->SetTile(board_[i][j]);
                 }
-
-
             }
             else if (i >= 5) {
                 if ((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0)) {

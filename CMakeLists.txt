@@ -13,7 +13,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(CheckersGUI src/ui/MainWindow.cpp src/ui/MainWindow.h src/ui/ChoosePlayers.cpp src/ui/ChoosePlayers.h src/ui/GameBoard.cpp src/ui/GameBoard.h src/ui/BoardTile.cpp src/ui/BoardTile.h src/ui/Token.cpp src/ui/Token.h)
+add_executable(CheckersGUI)
 target_link_libraries(CheckersGUI
         Qt::Core
         Qt::Gui
@@ -21,5 +21,5 @@ target_link_libraries(CheckersGUI
         )
 
 #set_property(TARGET CheckersGUI PROPERTY AUTOMOC ON)
-
+target_include_directories(CheckersGUI PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_subdirectory(src)

@@ -6,7 +6,7 @@
 #define CHECKERSGUI_TOKEN_H
 
 #include <QIcon>
-#include "BoardTile.h"
+#include "ui/BoardTile.h"
 class BoardTile;
 
 class Token {

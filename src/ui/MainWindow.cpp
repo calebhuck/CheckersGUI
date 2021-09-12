@@ -35,11 +35,11 @@ MainWindow::MainWindow(QApplication *app) {
     this->setFixedSize(usable_window_height_, usable_window_width_);
     this->setStyleSheet("background-color:#cdcdcd");
 
-    game_loop_ = new GameLoop(this);
+
     QObject::connect(app, &QApplication::aboutToQuit, game_loop_, [this](){
         game_loop_->abort();
         game_loop_->quit();
-        game_loop_->wait(6000);
+        game_loop_->wait(1000);
     });
     SelectPlayersWindow();
     this->show();
@@ -62,7 +62,7 @@ void MainWindow::SetNumPlayers(int num_players) {
     if (game_loop_ != nullptr) {
         delete game_loop_;
     }
-    game_loop_ = new GameLoop(this);
+    game_loop_ = new GameLoop(this, selected_num_players_, game_board_);
     game_loop_->start();
 
 }

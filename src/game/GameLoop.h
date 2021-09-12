@@ -6,11 +6,12 @@
 #define CHECKERSGUI_GAMELOOP_H
 
 #include <QThread>
-
+#include "GameLoop.h"
+class GameBoard;
 class GameLoop : public QThread {
 Q_OBJECT
 public:
-    GameLoop(QObject* parent);
+    GameLoop(QObject* parent, int num_players, GameBoard *game_board);
     ~GameLoop() = default;
     void abort();
     bool abort_ = false;

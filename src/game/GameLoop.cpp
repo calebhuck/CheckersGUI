@@ -3,9 +3,10 @@
 //
 
 #include <iostream>
+#include <ui/GameBoard.h>
 #include "GameLoop.h"
-
-GameLoop::GameLoop(QObject* parent) : QThread(parent){}
+class GameBoard;
+GameLoop::GameLoop(QObject* parent, int num_players, GameBoard *game_board) {}
 
 void GameLoop::run() {
     while (!abort_) {
